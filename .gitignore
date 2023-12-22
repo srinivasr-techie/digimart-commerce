@@ -57,7 +57,7 @@ HybrisCodeGeneration.launch
 **/build-tools/
 **/licenses/*
 **/installer/*
-!**/installer/recipes/cx-sapmart/*
+!**/installer/recipes/cx-digimart/*
 
 # Filename patterns to ignore
 *.class
