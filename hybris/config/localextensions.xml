@@ -1,0 +1,43 @@
+<hybrisconfig xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../bin/platform/resources/schemas/extensions.xsd'>
+  <extensions>
+    <path dir='${HYBRIS_BIN_DIR}' autoload='false' />
+    <extension name='spartacussampledata' />
+    <extension name='swaggerintegration' />
+    <extension name='electronicsstore' />
+    <extension name='apiregistrybackoffice' />
+    <extension name='apiregistryservices' />
+    <extension name='digimartbackoffice' />
+    <extension name='digimartcore' />
+    <extension name='digimartfacades' />
+    <extension name='digimartinitialdata' />
+    <extension name='digimartocc' />
+    <extension name='backoffice' />
+    <extension name='platformbackoffice' />
+    <extension name='commercefacades' />
+    <extension name='commerceservices' />
+    <extension name='commerceservicesbackoffice' />
+    <extension name='commercewebservices' />
+    <extension name='commercewebservicescommons' />
+    <extension name='digimartcouponbackoffice' />
+    <extension name='digimartcouponservices' />
+    <extension name='npmancillary' />
+    <extension name='digimartpromotionenginebackoffice' />
+    <extension name='digimartpromotionengineservices' />
+    <extension name='droolsruleengineservices' />
+    <extension name='ordercalculation' />
+    <extension name='rulebuilderbackoffice' />
+    <extension name='ruledefinitions' />
+    <extension name='ruleengine' />
+    <extension name='ruleenginebackoffice' />
+    <extension name='ruleengineservices' />
+    <extension name='backofficesolrsearch' />
+    <extension name='solrfacetsearch' />
+    <extension name='solrfacetsearchbackoffice' />
+    <extension name='solrserver' />
+    <extension name='cms2' />
+    <extension name='cms2lib' />
+    <extension name='cmsbackoffice' />
+    <extension name='cmsfacades' />
+    <extension name='cmsocc' />
+  </extensions>
+</hybrisconfig>
