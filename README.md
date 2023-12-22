@@ -29,3 +29,25 @@ INSERT_UPDATE CorsConfigurationProperty;key[unique=true];value;context[default=c
         
 # Swagger UI URL
 https://localhost:9002/occ/v2/swagger-ui/index.html
+
+#################################################### To increase server startup time - Start =============================================================================
+
+# Using only master tenant
+installed.tenants=
+
+# Disable task engine
+cronjob.timertask.loadonstartup=false
+task.engine.loadonstartup=false
+
+# Disable backoffice warmup
+backoffice.fill.typefacade.cache.on.startup=false
+
+# Disable/remove unused web modules for extensions
+processing.webroot=<disabled>
+virtualjdbc.webroot=<disabled>
+mcc.webroot=<disabled>
+
+# Disable Auditing
+auditing.enabled=false
+
+#################################################### To increase server startup time - End =============================================================================
