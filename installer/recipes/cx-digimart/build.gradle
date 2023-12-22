@@ -76,6 +76,7 @@ def platform = platform {
             extName 'digimartfacades'
             extName 'digimartinitialdata'
             extName 'digimartocc'
+	    extName 'digimartstorefront'
 		// backoffice-framework
             extName 'backoffice'
             extName 'platformbackoffice'
