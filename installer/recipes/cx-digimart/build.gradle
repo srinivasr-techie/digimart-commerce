@@ -1,0 +1,160 @@
+apply plugin: 'installer-platform-plugin'
+apply plugin: 'installer-addon2-plugin'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+    }
+}
+
+ext {
+    workDir = "./work"
+}
+
+def platform = platform {
+    localProperties {
+        '# place your custom properties into this file instead of modifying the project.properties'
+        '# all properties in this file have higher priority and will overwrite the platform/project.properties settings.'
+
+        property '#mykey', '#myvalue'
+        property 'initialpassword.admin', 'nimda'
+        property 'hac.webroot', '/hac'
+        property 'recaptcha.publickey', ''
+        property 'recaptcha.privatekey', ''
+        property 'googleApiKey', ''
+		property 'auditing.enabled', 'false'
+
+        property 'website.electronics.http', 'http://electronics.local:9001/digimartstorefront'
+        property 'website.electronics.https', 'https://electronics.local:9002/digimartstorefront'
+        property 'website.apparel-de.http', 'http://apparel-de.local:9001/digimartstorefront'
+        property 'website.apparel-de.https', 'https://apparel-de.local:9002/digimartstorefront'
+        property 'website.apparel-uk.http', 'http://apparel-uk.local:9001/digimartstorefront'
+        property 'website.apparel-uk.https', 'https://apparel-uk.local:9002/digimartstorefront'
+        property 'website.powertools.http', 'http://powertools.local:9001/digimartstorefront'
+        property 'website.powertools.https', 'https://powertools.local:9002/digimartstorefront'
+        property 'multicountrysampledataaddon.import.active', 'false'
+        property 'occ.rewrite.overlapping.paths.enabled', 'true' // for being able to run B2C & B2B alongside each other
+        property 'backoffice.solr.search.index.autoinit', 'false'
+
+        property 'corsfilter.default.allowedOrigins', '*'
+        property 'corsfilter.acceleratorservices.allowedOrigins', 'origin content-type accept authorization cache-control x-anonymous-consents x-profile-tag-debug x-consent-reference'
+        property 'corsfilter.permissionswebservices.allowedOrigins', '*'
+
+        property 'corsfilter.digimartcommercewebservices.allowedOrigins', '*'
+        property 'corsfilter.digimartcommercewebservices.allowedHeaders', 'origin content-type accept authorization cache-control x-anonymous-consents x-profile-tag-debug x-consent-reference'
+        property 'corsfilter.digimartcommercewebservices.exposedHeaders', 'x-anonymous-consents'
+
+        property 'corsfilter.commercewebservices.allowedOrigins', '*'
+        property 'corsfilter.commercewebservices.allowedHeaders', '*'
+        property 'corsfilter.commercewebservices.exposedHeaders', 'x-anonymous-consents'
+
+        property 'mockup.payment.label.billTo.region', 'billTo_state'
+        property 'mockup.payment.label.billTo.phoneNumber', 'billTo_phoneNumber'
+    }
+
+    afterSetup {
+        ensureAdminPasswordSet()
+    }
+
+    extensions {
+        // spartacus extensions
+            extName 'spartacussampledata'
+		// swagger
+			extName 'swaggerintegration'
+        // b2c-accelerator
+            extName 'electronicsstore'
+		// api-registry
+            extName 'apiregistrybackoffice'
+            extName 'apiregistryservices'
+        // base-accelerator
+            extName 'digimartbackoffice'
+            extName 'digimartcore'
+            extName 'digimartfacades'
+            extName 'digimartinitialdata'
+            extName 'digimartocc'
+		// backoffice-framework
+            extName 'backoffice'
+            extName 'platformbackoffice'
+		// commerce-services
+            extName 'commercefacades'
+            extName 'commerceservices'
+            extName 'commerceservicesbackoffice'
+            extName 'commercewebservices'
+            extName 'commercewebservicescommons'
+		// coupon
+            extName 'digimartcouponbackoffice'
+            extName 'digimartcouponservices'
+		// npm-ancillary
+            extName 'npmancillary'
+		// promotion-engine
+            extName 'digimartpromotionenginebackoffice'
+            extName 'digimartpromotionengineservices'
+        // rule-engine
+            extName 'droolsruleengineservices'
+            extName 'ordercalculation'
+            extName 'rulebuilderbackoffice'
+            extName 'ruledefinitions'
+            extName 'ruleengine'
+            extName 'ruleenginebackoffice'
+            extName 'ruleengineservices'
+        // search-and-navigation
+            extName 'backofficesolrsearch'
+            extName 'solrfacetsearch'
+            extName 'solrfacetsearchbackoffice'
+            extName 'solrserver'
+        // web-content-management-system
+            extName 'cms2'
+            extName 'cms2lib'
+            extName 'cmsbackoffice'
+            extName 'cmsfacades'
+            extName 'cmsocc'
+    }
+}
+
+task createStoreFrontExt {
+    doLast {
+        def prePlatform = platformFactory.createPlatform()
+        prePlatform.createConfigDirIfNotExist()
+        prePlatform.resetConfig()
+    }
+}
+
+task setup(dependsOn: createStoreFrontExt) {
+    doLast {
+        platform.setup()
+    }
+}
+
+task buildSystem(dependsOn: setup) {
+    doLast {
+        platform.build()
+    }
+}
+
+task initialize(dependsOn: buildSystem) {
+    doLast {
+        platform.initialize()
+    }
+}
+
+task start {
+    doLast {
+        platform.start()
+    }
+}
+
+task startInBackground {
+    doLast {
+        platform.startInBackground()
+    }
+}
+
+task stopInBackground {
+    doLast {
+        platform.stopInBackground()
+    }
+}
