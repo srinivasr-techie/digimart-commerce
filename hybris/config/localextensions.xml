@@ -10,6 +10,7 @@
     <extension name='digimartcore' />
     <extension name='digimartfacades' />
     <extension name='digimartinitialdata' />
+    <extension name='digimartstorefront' />
     <extension name='digimartocc' />
     <extension name='backoffice' />
     <extension name='platformbackoffice' />
