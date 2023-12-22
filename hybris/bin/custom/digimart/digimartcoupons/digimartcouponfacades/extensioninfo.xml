@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
+--><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+           
+    
+    <extension abstractclassprefix="Generated" classprefix="Digimartcouponfacades" jaloLogicFree="true" managername="DigimartcouponfacadesManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="digimartcouponfacades" usemaven="false">
+                  
+
+		<requires-extension name="digimartfacades"/>
+		
+		<requires-extension name="digimartcouponservices"/>
+        
+        <coremodule generated="true" manager="com.digimart.couponfacades.jalo.DigimartcouponfacadesManager" packageroot="com.digimart.couponfacades"/>
+                	
+        
+           
+    
+    </extension>
+        
+
+</extensioninfo>
